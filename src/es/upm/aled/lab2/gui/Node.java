@@ -17,7 +17,7 @@ public class Node {
 
 	/**
 	 * Builds a new Node from its absolute position.
-	 * 
+	 *  
 	 * @param x The X coordinate.
 	 * @param y The Y coordinate.
 	 */
@@ -62,7 +62,7 @@ public class Node {
 	 * @param measurement The Node to be added.
 	 */
 	public void addChild(Node child) {
-		if (!children.contains(child))
+		if (!children.contains(child)) 
 			children.add(child);
 	}
 
