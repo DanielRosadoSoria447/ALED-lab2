@@ -1,5 +1,7 @@
 package es.upm.aled.lab2.kinematics;
 
+import java.util.List;
+
 import es.upm.aled.lab2.gui.Node;
 
 /**
@@ -27,10 +29,35 @@ public class ForwardKinematics {
 	// Public method: returns the root of the position tree
 	public static Node computePositions(Segment root, double originX, double originY) {
 		// TODO: Implemente este método
+		return computePositions(root, originX, originY,0); 
 	}
 
 	// Private helper method that implements the recursive algorithm
 	private static Node computePositions(Segment link, double baseX, double baseY, double accumulatedAngle) {
 		// TODO: Implemente este método
+		
+		//Código general
+		double x = baseX + link.getLength() * Math.cos(accumulatedAngle + link.getAngle());
+		
+		double y = baseY + link.getLength() * Math.sin(accumulatedAngle + link.getAngle()); 
+		  
+		Node node = new Node(x,y); 
+		  
+		
+		//Caso base
+		if(link.getChildren().size()==0) { 
+			
+			return node;
+		}  
+		
+		//Paso recursivo
+		for (Node n : node.getChildren()) {  
+			n.addChild(node); 
+			computePositions(link, x, y,accumulatedAngle + link.getAngle()); 
+			
+		} 
+		
+		return node; 
+		
 	}
 }

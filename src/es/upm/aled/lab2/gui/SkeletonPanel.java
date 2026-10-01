@@ -11,7 +11,7 @@ import es.upm.aled.lab2.kinematics.*;
  * 
  * @author rgarciacarmona
  */
-public class SkeletonPanel extends JPanel {
+public class SkeletonPanel extends JPanel { 
 
 	private static final long serialVersionUID = 8724301078499171545L;
 	private Segment root;
@@ -31,7 +31,7 @@ public class SkeletonPanel extends JPanel {
 	 * @param sizeX The width of the window.
 	 * @param sizeX The height of the window.
 	 */
-	public SkeletonPanel(Segment root, int sizeX, int sizeY) {
+	public SkeletonPanel(Segment root, int sizeX, int sizeY) { 
 		this.root = root;
 		// Setup Swing window
 		JFrame frame = new JFrame("Recursive Skeleton - Forward Kinematics");
@@ -57,13 +57,19 @@ public class SkeletonPanel extends JPanel {
 
 	private void drawSkeleton(Graphics g, double parentX, double parentY, Node node) {
 		// TODO: Ponga comentarios en este método
+		
+		//Código general o común
 		g.fillOval((int) node.getX() - 4, (int) node.getY() - 4, 8, 8);
 		g.drawLine((int) parentX, (int) parentY, (int) node.getX(), (int) node.getY());
+		
+		//Caso base
 		if (node.getChildren().size() == 0) {
 			return;
-		}
+		} 
+		
+		//Paso recursivo
 		for (Node child : node.getChildren()) {
-			drawSkeleton(g, node.getX(), node.getY(), child);
+			drawSkeleton(g, node.getX(), node.getY(), child); 
 		}
 	}
 }
